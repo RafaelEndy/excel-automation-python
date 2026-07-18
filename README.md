@@ -1,24 +1,22 @@
 # Excel Report Automation
 
-Script Python que le uma planilha de vendas "crua" — com formatos de data
-inconsistentes, categorias com grafia diferente, valores ausentes e linhas
-duplicadas — e transforma em um relatorio Excel limpo, formatado e com
-grafico, pronto para ser enviado a um cliente ou gestor.
+Este é um script Python desenvolvido para automatizar a limpeza e organização de planilhas de vendas.
+
+O script recebe uma planilha "crua" — com formatos de data inconsistentes, categorias com grafia diferente, valores ausentes e linhas duplicadas — e transforma em um relatório Excel limpo, formatado e com gráfico.
 
 ## O que o script faz
 
-1. **Le** os dados brutos de `data/vendas_brutas.csv`
-2. **Limpa**:
-   - remove espacos extras de texto
+1. Lê os dados brutos de `data/vendas_brutas.csv`
+2. Limpa os dados:
+   - remove espaços extras de texto
    - padroniza categorias (`PERIFERICOS`, `perifericos` → `Perifericos`)
    - unifica datas em formatos diferentes (`01/03/2026`, `2026-03-02`, `04-03-2026`)
    - preenche quantidade/valor ausentes com a mediana do produto (ou geral, como fallback)
    - remove linhas duplicadas
-3. **Calcula** a receita total por categoria
-4. **Gera**:
-   - `output/relatorio_vendas.xlsx` — planilha com aba de Resumo (com grafico
-     nativo do Excel) e aba de Dados Tratados, com cabecalhos formatados
-   - `output/grafico_receita_categoria.png` — grafico de barras standalone
+3. Calcula a receita total por categoria
+4. Gera:
+   - `output/relatorio_vendas.xlsx` — planilha com aba de Resumo (com gráfico nativo do Excel) e aba de Dados Tratados, com cabeçalhos formatados
+   - `output/grafico_receita_categoria.png` — gráfico de barras separado, em imagem
 
 ## Como rodar
 
@@ -41,12 +39,12 @@ excel-automation-python/
 
 ## Tecnologias
 
-- **pandas** — leitura, limpeza e agregacao dos dados
-- **openpyxl** — geracao do Excel formatado (cores, fontes, grafico nativo)
-- **matplotlib** — geracao do grafico em imagem
+- **pandas** — leitura, limpeza e agregação dos dados
+- **openpyxl** — geração do Excel formatado (cores, fontes, gráfico nativo)
+- **matplotlib** — geração do gráfico em imagem
 
-## Possiveis evoluções
+## Possíveis evoluções
 
-- Suportar entrada em `.xlsx` alem de `.csv`
-- Adicionar filtro por periodo (mes/ano) via linha de comando
-- Exportar tambem em PDF
+- Suportar entrada em `.xlsx` além de `.csv`
+- Adicionar filtro por período (mês/ano) via linha de comando
+- Exportar também em PDF
