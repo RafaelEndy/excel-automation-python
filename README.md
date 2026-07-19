@@ -1,50 +1,50 @@
 # Excel Report Automation
 
-Este é um script Python desenvolvido para automatizar a limpeza e organização de planilhas de vendas.
+This is a Python script built to automate the cleaning and organization of sales spreadsheets.
 
-O script recebe uma planilha "crua" — com formatos de data inconsistentes, categorias com grafia diferente, valores ausentes e linhas duplicadas — e transforma em um relatório Excel limpo, formatado e com gráfico.
+It takes a "raw" spreadsheet — with inconsistent date formats, differently-spelled categories, missing values, and duplicate rows — and turns it into a clean, formatted Excel report with a chart.
 
-## O que o script faz
+## What the script does
 
-1. Lê os dados brutos de `data/vendas_brutas.csv`
-2. Limpa os dados:
-   - remove espaços extras de texto
-   - padroniza categorias (`PERIFERICOS`, `perifericos` → `Perifericos`)
-   - unifica datas em formatos diferentes (`01/03/2026`, `2026-03-02`, `04-03-2026`)
-   - preenche quantidade/valor ausentes com a mediana do produto (ou geral, como fallback)
-   - remove linhas duplicadas
-3. Calcula a receita total por categoria
-4. Gera:
-   - `output/relatorio_vendas.xlsx` — planilha com aba de Resumo (com gráfico nativo do Excel) e aba de Dados Tratados, com cabeçalhos formatados
-   - `output/grafico_receita_categoria.png` — gráfico de barras separado, em imagem
+1. Reads the raw data from `data/vendas_brutas.csv`
+2. Cleans the data:
+   - removes extra whitespace from text
+   - standardizes categories (`PERIFERICOS`, `perifericos` → `Perifericos`)
+   - unifies dates in different formats (`01/03/2026`, `2026-03-02`, `04-03-2026`)
+   - fills missing quantity/price with the product's median (or overall median, as a fallback)
+   - removes duplicate rows
+3. Calculates total revenue by category
+4. Generates:
+   - `output/relatorio_vendas.xlsx` — spreadsheet with a Summary tab (with a native Excel chart) and a Cleaned Data tab, with formatted headers
+   - `output/grafico_receita_categoria.png` — standalone bar chart image
 
-## Como rodar
+## How to run
 
 ```bash
 pip install -r requirements.txt
 python src/gerar_relatorio.py
 ```
 
-## Estrutura
+## Structure
 
 ```
 excel-automation-python/
 ├── data/
-│   └── vendas_brutas.csv       # dados de entrada (exemplo bagunçado)
+│   └── vendas_brutas.csv       # input data (messy example)
 ├── src/
-│   └── gerar_relatorio.py      # script principal
-├── output/                     # gerado automaticamente ao rodar
+│   └── gerar_relatorio.py      # main script
+├── output/                     # generated automatically when run
 └── requirements.txt
 ```
 
-## Tecnologias
+## Tech stack
 
-- **pandas** — leitura, limpeza e agregação dos dados
-- **openpyxl** — geração do Excel formatado (cores, fontes, gráfico nativo)
-- **matplotlib** — geração do gráfico em imagem
+- **pandas** — reading, cleaning, and aggregating the data
+- **openpyxl** — generating the formatted Excel file (colors, fonts, native chart)
+- **matplotlib** — generating the chart image
 
-## Possíveis evoluções
+## Possible improvements
 
-- Suportar entrada em `.xlsx` além de `.csv`
-- Adicionar filtro por período (mês/ano) via linha de comando
-- Exportar também em PDF
+- Support `.xlsx` input in addition to `.csv`
+- Add a period filter (month/year) via command line
+- Also export to PDF
